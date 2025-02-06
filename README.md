@@ -1,6 +1,13 @@
 # Proto-Swarm
 Python Code allows multiple robots to work together to traverse unknown environments, map the surroundings, and perform tasks autonomously while maintaining efficient communication and coordination.
 
+# Requirements:
+### Webots Simulator: you can install Webots Simulator from https://cyberbotics.com/
+### Python must be installed in your system for the code to work, along with libraries such as Matplotlib, numpy, etc.
+### Save the Proto-Swarm Folder into the 'Webot' directory (i.e. a 'Webot' folder will be created after the successful installation of the simulator)
+
+
+
 ## Function Design
 The Robots deployed in the ‘PROTO-SWARM’ project require an extensive set of methods or functions to achieve their objectives. Functions such as Exploration, LIDAR to World Coordinates, Database, Map Generation, Obstacle Detection, and a helper module which contains a set of helper functions such as reverse, and rotate, etc. all contribute to various scenarios that the robots can respond to. 
 
