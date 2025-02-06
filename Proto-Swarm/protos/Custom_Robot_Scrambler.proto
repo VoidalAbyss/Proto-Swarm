@@ -1,0 +1,134 @@
+#VRML_SIM R2023b utf8
+# Custom Robot designed to test Lidar, GPS, and Mapping capabilities (Currently in development)
+# template language: javascript
+
+
+PROTO Custom_Robot_Scrambler [
+
+]
+{
+  Robot {
+  translation 1.75 -0.02 0
+  children [
+    DEF Body Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 1 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF HingeJoint_Left_Wheel_Motor_1 HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor 0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 -0.005 0.025
+        rotation 0 -0.9999999999999999 0 1.5707953071795862
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Wheel_physics Physics {
+        }
+      }
+    }
+    DEF HingeJoint_Right_Wheel_Motor_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        anchor -0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 -0.005 0.025
+        rotation 0 -0.9999999999999999 0 1.5707953071795862
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Wheel_physics
+      }
+    }
+    DEF Left_Eye Solid {
+      translation -0.01 -0.045 0.07
+      children [
+        DEF eye Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF Right_Eye Solid {
+      translation 0.01 -0.045 0.07
+      children [
+        USE eye
+      ]
+      name "solid(3)"
+    }
+    DEF Lidar_Sensor Solid {
+      translation 0 0 0.082
+      children [
+        USE eye
+      ]
+      name "solid(4)"
+    }
+    DEF GPS_Sensor Solid {
+      translation 0 0.03 0.082
+      children [
+        USE eye
+      ]
+      name "solid(5)"
+    }
+    GPS {
+      translation 0 0.03 0.082
+      name "gps_custom"
+    }
+    Lidar {
+      translation 0 0 0.082
+      rotation 0 0 1 -1.57
+      name "lidar_custom"
+      numberOfLayers 1
+    }
+  ]
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "lidar_gps_map_generator"
+}
+}

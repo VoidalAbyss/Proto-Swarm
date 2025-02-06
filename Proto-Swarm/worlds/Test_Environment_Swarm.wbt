@@ -1,0 +1,309 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/factory/containers/protos/WoodenBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 0.24372932126834257 -0.12328367864471901 5.176250784560691
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 3 2
+}
+WoodenBox {
+  translation 0.4 0.68 0.05
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -1.37 0.87 0.05
+  name "wooden box(1)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation -0.49 -0.92 0.05
+  name "wooden box(2)"
+  size 0.1 0.1 0.1
+}
+WoodenBox {
+  translation 0.34 -0.86 0.05
+  name "wooden box(3)"
+  size 0.1 0.1 0.1
+}
+Robot {
+  translation 0.0005800274951137283 0.731646004430158 -0.0003194477246416874
+  rotation -0.9284256255863252 0.005428290351143503 -0.37147865540095876 0.03156712369375354
+  children [
+    DEF Body Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 1 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF HingeJoint_Left_Wheel_Motor_1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.30211679436548433
+        anchor 0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 -0.005 0.025
+        rotation 0.14880920662177602 -0.9776050762993406 -0.14880905489370663 1.5934428691226032
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Wheel_physics Physics {
+        }
+      }
+    }
+    DEF HingeJoint_Right_Wheel_Motor_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.30211674098745633
+        anchor -0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 -0.005 0.025
+        rotation 0.14880918110820346 -0.9776050840665876 -0.1488090293801615 1.593442861179463
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Wheel_physics
+      }
+    }
+    DEF Left_Eye Solid {
+      translation -0.01 -0.045 0.07
+      children [
+        DEF eye Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF Right_Eye Solid {
+      translation 0.01 -0.045 0.07
+      children [
+        USE eye
+      ]
+      name "solid(3)"
+    }
+    DEF Lidar_Sensor Solid {
+      translation 0 0 0.082
+      children [
+        USE eye
+      ]
+      name "solid(4)"
+    }
+    DEF GPS_Sensor Solid {
+      translation 0 0 0.082
+      children [
+        USE eye
+      ]
+      name "solid(5)"
+    }
+    GPS {
+      translation 0 0 0.082
+      name "gps_custom"
+    }
+    Lidar {
+      translation 0 0 0.082
+      rotation 0 0 1 -1.57
+      name "lidar_custom"
+      numberOfLayers 1
+      maxRange 0.5
+    }
+  ]
+  name "bot_1"
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "LidarMapGenerationV4_Swarm"
+}
+Robot {
+  translation 1.20183 -0.874778 0.00632879
+  rotation 8.567556813505347e-05 0.014653494549988632 0.9998926281142242 3.12987
+  children [
+    DEF Body Pose {
+      translation 0 0 0.0415
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.666667 1 1
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    DEF HingeJoint_Left_Wheel_Motor_1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.30211679436548433
+        anchor 0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_1"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation 0.045 -0.005 0.025
+        rotation 0.14880920662177602 -0.9776050762993406 -0.14880905489370663 1.5934428691226032
+        children [
+          DEF Wheel Shape {
+            appearance PBRAppearance {
+              baseColor 1 0 0
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.025
+            }
+          }
+        ]
+        boundingObject USE Wheel
+        physics DEF Wheel_physics Physics {
+        }
+      }
+    }
+    DEF HingeJoint_Right_Wheel_Motor_2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.30211674098745633
+        anchor -0.045 -0.005 0.025
+      }
+      device [
+        RotationalMotor {
+          name "motor_2"
+          maxVelocity 100
+        }
+      ]
+      endPoint Solid {
+        translation -0.045 -0.005 0.025
+        rotation 0.14880918110820346 -0.9776050840665876 -0.1488090293801615 1.593442861179463
+        children [
+          USE Wheel
+        ]
+        name "solid(1)"
+        boundingObject USE Wheel
+        physics USE Wheel_physics
+      }
+    }
+    DEF Left_Eye Solid {
+      translation -0.01 -0.045 0.07
+      children [
+        DEF eye Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.005 0.005 0.005
+          }
+        }
+      ]
+      name "solid(2)"
+    }
+    DEF Right_Eye Solid {
+      translation 0.01 -0.045 0.07
+      children [
+        USE eye
+      ]
+      name "solid(3)"
+    }
+    DEF Lidar_Sensor Solid {
+      translation 0 0 0.082
+      children [
+        USE eye
+      ]
+      name "solid(4)"
+    }
+    DEF GPS_Sensor Solid {
+      translation 0 0 0.082
+      children [
+        USE eye
+      ]
+      name "solid(5)"
+    }
+    GPS {
+      translation 0 0 0.082
+      name "gps_custom"
+    }
+    Lidar {
+      translation 0 0 0.082
+      rotation 0 0 1 -1.57
+      name "lidar_custom"
+      numberOfLayers 1
+      maxRange 0.5
+    }
+  ]
+  name "bot_2"
+  boundingObject USE Body
+  physics Physics {
+  }
+  controller "LidarMapGenerationV4_SwarmBot2"
+}
+Wall {
+  translation -1.12 -0.130001 0
+  rotation 0 0 1 -1.5707953071795862
+  size 0.1 0.73 0.4
+}
+Wall {
+  translation 0.57 -0.130001 0
+  rotation 0 0 1 -1.5707953071795862
+  name "wall(1)"
+  size 0.1 1.85 0.4
+}
