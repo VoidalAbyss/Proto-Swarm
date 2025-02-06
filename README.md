@@ -8,7 +8,7 @@ Python Code allows multiple robots to work together to traverse unknown environm
 
 
 
-## Function Design
+# Function Design
 The Robots deployed in the ‘PROTO-SWARM’ project require an extensive set of methods or functions to achieve their objectives. Functions such as Exploration, LIDAR to World Coordinates, Database, Map Generation, Obstacle Detection, and a helper module which contains a set of helper functions such as reverse, and rotate, etc. all contribute to various scenarios that the robots can respond to. 
 
 The following paragraphs discuss each function:
